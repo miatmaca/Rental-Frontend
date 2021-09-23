@@ -1,0 +1,60 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+        <div    class="card-header"><h5 class="title">Profil</h5>  </div>
+   <div class="card-body">               
+      
+ <form [formGroup]="profilForm">
+        
+    <div class="mb-3">
+    <label for="Id">Id</label>
+              <div class="form-group">
+            <input  type="number" id="Id" formControlName="Id"  class="form-control" [(ngModel)]="Id"   placeholder="Kullanıcı Numarası"/>
+         </div><br>
+</div>
+
+<div class="mb-3">
+<label for="firstName">Kullanıcı Adı</label>          
+         <div class="form-group">
+            <input  type="text" id="firstName" formControlName="firstName"  class="form-control"   [(ngModel)]="firstName" placeholder="Adınız"/>
+         </div><br>
+</div>
+
+ 
+<div class="mb-3">       
+    <label for="lastName">Kullanıcı Soyadı</label> 
+         <div class="form-group" >
+            <input  type="text" id="lastName" formControlName="lastName"  class="form-control"  [(ngModel)]="lastName"   placeholder="Soyadınız"/>
+         </div><br>
+</div>
+<div class="mb-3">       
+    <label for="password">Parola</label> 
+         <div class="form-group" >
+            <input  type="text" id="password" formControlName="password"  class="form-control"  [(ngModel)]="password"   placeholder="Parola"/>
+         </div><br>
+</div>
+
+
+
+<div class="mb-3">    
+    <label for="email">E-Posta</label>
+    <div class="form-group" >
+       <input  type="text" id="email" formControlName="email"  class="form-control"   [(ngModel)]="email" placeholder="E-posta"/>       
+    </div><br>
+    
+</div>   
+ </form>
+  
+   </div>   
+        <div class="card-footer"> 
+           <button class="btn btn-fill btn-warning"  routerLink="/cars">
+      Geri dön
+    </button>
+
+        <button class="btn btn-fill btn btn-success" style="float: right" (click)="profileUpdate()" > Güncelle</button>
+        </div>
+    </div>
+    </div>
+    </div>
+
+   

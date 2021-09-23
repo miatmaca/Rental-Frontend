@@ -1,0 +1,72 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/3.0.0/jquery.payment.min.js"></script>
+<div class="padding">
+    <div class="row">
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="col-sm-8 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6"> <span>CREDIT/DEBIT CARD PAYMENT</span> </div>
+                            <div class="col-md-6 text-right" style="margin-top: -5px;"> <img src="https://img.icons8.com/color/36/000000/visa.png"> <img src="https://img.icons8.com/color/36/000000/mastercard.png"> <img src="https://img.icons8.com/color/36/000000/amex.png"> </div>
+                        </div>
+                    </div>
+                    <form [formGroup]="paymentForm">
+                    <div class="card-body" style="height: 350px">
+                        <div class="form-group"> <label for="cc-number" class="control-label">Kart Numarası</label> <input id="cardNumber" formControlName="cardNumber" [(ngModel)]="cardNumber" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="•••• •••• •••• ••••" required> </div>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group"> <label for="cc-exp" class="control-label">Ay</label> <input id="expMonth" type="tel" formControlName="expMonth" [(ngModel)]="expMonth" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="•• / ••" required> </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group"> <label for="cc-exp" class="control-label">Yıl</label> <input id="expYear" type="tel" formControlName="expYear" [(ngModel)]="expYear" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="•• / ••" required> </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group"> <label for="cc-cvc" class="control-label">CVV</label> <input id="cvv" type="tel" formControlName="cvv" [(ngModel)]="cvv" class="input-lg form-control cc-cvc" autocomplete="off" placeholder="••••" required> </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group"> <label for="cc-cvc" class="control-label">Kart Tipi</label> <input id="cardType" type="tel" formControlName="cardType" [(ngModel)]="cardType" class="input-lg form-control cc-cvc" autocomplete="off" placeholder="••••" required> </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group"> <label for="numeric" class="control-label">Kart Üzerindeki İsim</label> <input type="fullName" formControlName="fullName" [(ngModel)]="fullName" class="input-lg form-control"> </div><br>
+                        </div>
+
+                        </form>
+
+
+                        <div class="form-group"> <input value="Ödeme Gerçekleştir" type="button"  (click)="CreditControl()" class="btn btn-success btn-lg form-control" style="font-size: .8rem;"        > </div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+</div>
+
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+        <div    class="card-header"><h5 class="title">Ürün Bilgisi</h5>  </div>
+   <div class="card-body">               
+      
+ <form [formGroup]="rentalDetailForm">
+        
+    <div class="mb-3">
+    <label for="carId"> </label>
+              <div class="form-group">
+            <input  type="number" id="carId" formControlName="carId"  class="form-control"    placeholder="Car No"/>
+         </div><br>
+
+         <div class="form-group">
+            <input  type="number" id="customerId" formControlName="customerId"  class="form-control"    placeholder="Müşteri Numarası"/>
+         </div><br>
+
+         <div class="form-group">
+            <input  type="date" id="rentDate" formControlName="rentDate"  class="form-control"    placeholder="tarih"/>
+         </div><br>
+
+         <div class="form-group">
+            <input  type="date" id="returnDate" formControlName="returnDate"  class="form-control"    placeholder="tarih"/>
+         </div><br>
+</div>
+</form>

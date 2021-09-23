@@ -1,0 +1,49 @@
+<body class="text-center">
+    
+    <main class="form-signin">
+      <form [formGroup]="registerForm"> 
+        <img class="mb-4" src="https://cdn-nq.logo.com.tr/assets/images/social-post-default.png" alt="" width="100" height="100">
+        <h1 class="h3 mb-3 fw-normal">Kayıt Ol</h1>
+    
+
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput"  formControlName="firstName"  placeholder="Adı" >
+  
+            <label for="floatingInput">Adı</label>
+          </div>
+<br>
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput"  formControlName="lastName"  placeholder="Soyadı" >
+  
+            <label for="floatingInput">Soyadı</label>
+          </div>
+          <br>
+
+        <div class="form-floating">
+          <input type="email" class="form-control" id="floatingInput"  formControlName="email"  placeholder="name@example.com" >
+
+          <label for="floatingInput">E-posta</label>
+        </div>
+        <br>
+        <div class="form-floating">
+
+          <input type="password" class="form-control" id="floatingPassword" formControlName="password"  placeholder="Password">
+           
+          <label for="floatingPassword">Parola</label>
+        </div>
+        <br>
+        <!-- <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div> -->
+
+        <button class="w-100 btn btn-lg btn-primary" (click)="register()"   routerLink="{{link}}"  type="submit">Kayıt Ol</button>
+        <!-- <button class="w-100 btn btn-lg btn-primary" (click)="register()"   [routerLink]="link"  type="submit">Kayıt Ol</button> -->
+        <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
+      </form>
+    </main>
+    
+    
+        
+      </body>

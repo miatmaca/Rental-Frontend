@@ -1,0 +1,37 @@
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Marka Adı</th>
+            <th scope="col">Renk</th>
+            <th scope="col">Model Yılı</th>
+            <th scope="col">Açıklama</th>
+            <th scope="col">Fiyat</th>
+            
+            <th scope="col">
+                <button class="btn btn-success"  routerLink="/cars/add">
+         Araç Ekle
+        </button>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let car of cars">
+            <th scope="row">{{ car.carId }}</th>
+            <td>{{ car.brandName }}</td>
+            <td>{{car.colorName }}</td>
+            <td>{{ car.modelYear }}</td>
+            <td>{{ car.description }}</td>
+            <td>{{ car.dailyPrice }} ₺ </td>
+           
+            <td>
+                <button class="btn btn-warning"  routerLink="/cars/update/{{car.carId}}">
+          Güncelle
+        </button>
+                <button class="btn btn-danger mx-2"  routerLink="/cars/delete/{{ car.carId }}">
+          Sil
+        </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

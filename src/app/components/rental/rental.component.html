@@ -1,0 +1,99 @@
+
+ <div *ngFor="let car of cars">
+
+  <img
+  class="car-image"          
+  [src]="getPath()+car.imagePath" 
+  class="card-img-top"
+  alt="Resim Yok"
+  role="button"
+  width="200"
+  height="200"
+/> 
+
+<br><br>
+<div class="input-group mb-3"  >
+  <span class="input-group-text" id="basic-addon1">Marka Adı</span>
+  <input type="text" class="form-control" placeholder="{{car.brandName}}" aria-label="Username" aria-describedby="basic-addon1"> 
+</div>
+
+
+
+<div class="input-group mb-3" >
+  <span class="input-group-text" id="basic-addon1">   Renk  .........</span>
+  <input type="text" class="form-control" placeholder="{{car.colorName}}" aria-label="Username" aria-describedby="basic-addon1"> 
+</div>
+
+
+<div class="input-group mb-3" >
+  <span class="input-group-text" id="basic-addon1">Model Yılı   </span>
+  <input type="text" class="form-control" placeholder="{{car.modelYear}}" aria-label="Username" aria-describedby="basic-addon1"> 
+</div>
+
+
+<div class="input-group mb-3" >
+  <span class="input-group-text" id="basic-addon1">Açıklama....</span>
+  <input type="text" class="form-control" placeholder="{{car.description}}" aria-label="Username" aria-describedby="basic-addon1"> 
+</div>
+ <div class="input-group mb-3" >
+  <span class="input-group-text" id="basic-addon1">Günlük Fiyatı</span>
+  <input type="number" class="form-control" placeholder="{{car.dailyPrice}} ₺" aria-label="Username" aria-describedby="basic-addon1"> 
+</div> 
+
+
+<div class="input-group mb-3" >
+ <span class="input-group-text" id="basic-addon1">Gün</span>
+ <input type="number" class="form-control" placeholder="{{day}} " aria-label="Username"  [(ngModel)]="day" aria-describedby="basic-addon1"> 
+</div> 
+
+<div class="input-group mb-3" >
+  
+  <span class="input-group-text" id="basic-addon1">Toplam Fiyat </span>
+  <input type="number" class="form-control" placeholder="{{car.dailyPrice |calculateTotalPrice: day  }} " aria-label="Username" [(ngModel)]="totalPrice" aria-describedby="basic-addon1"> 
+</div> 
+
+<thead>
+  <th><label>Rent Date</label></th>
+  <th><label>Return Date</label></th>
+</thead>
+
+<tbody>
+  <tr>
+    <td>
+      <input
+        type="date"
+        (change)="calculateTotalPrice()"
+        [(ngModel)]="rentDay"
+
+      />
+    </td>
+    <td>
+      <input
+        type="date"
+        (change)="calculateTotalPrice()"
+        [(ngModel)]="returnDay"
+      />
+    </td>
+    <td>
+      <button
+       (click)="DateControl()"
+        type="button"
+        class="btn btn-primary"
+
+      >
+        Tarih Kontrol
+      </button>
+    </td>
+  </tr>
+</tbody>
+
+
+   
+
+<br>
+
+
+<a    class="btn btn-primary"     routerLink="/cars/payment/{{car.dailyPrice |calculateTotalPrice: day}}">  Ödemeye Git      </a><br>
+
+</div>
+

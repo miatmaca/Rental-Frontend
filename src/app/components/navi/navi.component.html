@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Rental Project</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Ana Sayfa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <app-cart-summary></app-cart-summary>
+
+        <app-list></app-list>
+        
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+       <!-- <li *ngIf="checkId()"  >
+         <select  *ngFor="let user of result" >   
+           <option >Ad Soyad: {{user.firstName}} {{user.lastName}} </option>  
+           <option > Email: {{user.email}} </option>           
+          
+          </select>
+        </li> -->
+        <div  *ngFor="let user of result">
+        <div class="btn-group" *ngIf="checkId()" >
+          <button type="button" class="btn btn-basic dropdown-toggle" data-bs-toggle="dropdown"  aria-expanded="false">
+           {{user.firstName}}
+          </button>
+          <ul class="dropdown-menu"   >
+            <li><a class="dropdown-item" >{{user.firstName}} {{user.lastName}}</a></li>
+            <li><a class="dropdown-item" >{{user.email}}</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" routerLink="/profile">Edit</a></li>
+            <li><a class="dropdown-item" (click)="remove()">Exit</a></li>
+          </ul>
+        </div>
+      </div>
+
+
+        <button    *ngIf="checkId()"  class="btn btn-primary" type="submit" (click)="remove()" > Çıkış Yap</button>
+
+        <button    *ngIf="check()"  class="btn btn-outline-success" type="submit" routerLink="/login"> Giriş Yap</button>
+
+        <button  *ngIf="check()"  class="btn btn-outline-success" type="submit" routerLink="/register">Kayıt Ol</button>
+     
+      </form>
+    </div>
+  </div>  
+</nav>
