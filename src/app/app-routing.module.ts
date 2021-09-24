@@ -46,13 +46,13 @@ const routes: Routes = [
 
 {path:"profile",component:ProfileComponent,canActivate:[LoginGuard]},
 
-//{path:"cars/rental/:carId",component:RentalladdComponent},
+{path:"rentalladd",component:RentalladdComponent},
 {path:"cars/rental/:carId",component:RentalComponent},
 
 {path:"rental/getbday/:carId",component:CarComponent},
 {path:"cars/rentall/:carId",component:CarComponent},
 
-{path:"cars/payment/:dailyPrice",component:PaymentComponent},
+{path:"cars/payment/:dailyPrice",component:PaymentComponent,canActivate:[LoginGuard]},
 
 {path:"login",component:LoginComponent},
 {path:"register",component:RegisterComponent},

@@ -27,7 +27,7 @@ colorAddForm:FormGroup
  
     this.colorAddForm=this.formBuilder.group({
     colorName:["",Validators.required],
-    colorId:["",Validators.required]
+  
     })
   }
 

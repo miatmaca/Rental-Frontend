@@ -1,61 +1,93 @@
-<div class="content">
-    <div class="col-md-12">
-        <div class="card">
-        <div    class="card-header"><h5 class="title">Araç Ekle</h5>  </div>
-   <div class="card-body">               
-      
- <form [formGroup]="carAddForm">
-        
-    <div class="mb-3">
-    <label for="modelYear">Model Yılı</label>
-              <div class="form-group">
-            <input  type="number" id="modelYear" formControlName="modelYear"  class="form-control"    placeholder="Model"/>
-         </div><br>
-</div>
+<div class="loader"></div>
 
-<div class="mb-3">
-<label for="dailyPrice">Fiyat</label>          
-         <div class="form-group">
-            <input  type="number" id="dailyPrice" formControlName="dailyPrice"  class="form-control"    placeholder="Fiyat"/>
-         </div><br>
-</div>
-
- 
-<div class="mb-3">       
-    <label for="description">Açıklama</label> 
-         <div class="form-group" >
-            <input  type="text" id="description" formControlName="description"  class="form-control"    placeholder="Açıklama"/>
-         </div><br>
-</div>
-
-
-
-<div class="mb-3">    
-    <label for="brandId">BrandId</label>
-    <div class="form-group" >
-       <input  type="number" id="brandId" formControlName="brandId"  class="form-control"    placeholder="BrandId"/>
-    </div><br>
-</div>
-
-   
-<div class="mb-3"> 
-    <label for="ColorId">colorId</label>
-    <div class="form-group" >
-       <input  type="number" id="colorId" formControlName="colorId"  class="form-control"    placeholder="ColorId"/>
-    </div><br>
-</div>
-
- </form>
-  
-   </div>   
-        <div class="card-footer"> 
-           <button class="btn btn-fill btn-warning"  routerLink="/cars/list">
-      Geri dön
-    </button>
-        <button class="btn btn-fill btn btn-success" style="float: right" (click)="add()" > Ekle</button>
+<br />
+<div class="content" >
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title text-succes" style="text-align: center">
+            Araç Ekle
+          </h5>
         </div>
+        <div class="card-body">
+         <form [formGroup]="carAddForm">        
+            <div class="mb-3">
+            <label for="modelYear">Model Yılı</label>
+                      <div class="form-group">
+                    <input  type="number" id="modelYear" formControlName="modelYear"  class="form-control"    placeholder="Model"/>
+                 </div><br>
+        </div>
+        
+        <div class="mb-3">
+        <label for="dailyPrice">Fiyat</label>          
+                 <div class="form-group">
+                    <input  type="number" id="dailyPrice" formControlName="dailyPrice"  class="form-control"    placeholder="Fiyat"/>
+                 </div><br>
+        </div>
+        
+         
+        <div class="mb-3">       
+            <label for="description">Açıklama</label> 
+                 <div class="form-group" >
+                    <input  type="text" id="description" formControlName="description"  class="form-control"    placeholder="Açıklama"/>
+                 </div><br>
+        </div>
+        <div class="mb-3">    
+            <label for="brandId">Marka</label>
+            <div class="form-group">     
+                <input  type="number" id="brandId" formControlName="brandId"  class="form-control"    placeholder="BrandId"/>
+            </div><br>
+        </div>   
+        <div class="mb-3"> 
+            <label for="ColorId">colorId</label>
+            <div class="form-group" >
+               <input  type="number" id="colorId" formControlName="colorId"  class="form-control"    placeholder="ColorId"/>
+            </div><br>
+        </div>
+         </form>  
+        </div>
+        <div class="card-footer">
+          <button
+            class="btn btn-fill btn-success pull-rigth"
+            (click)="add()"
+            style="float: right; width: 30%"
+          >
+            <i class="bi bi-plus-circle"></i>
+            Ekle
+          </button>
+          <button class="btn btn-fill btn-warning"  routerLink="/cars/list">
+            Geri dön
+          </button>
+          
+        </div>
+      </div>
     </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card" style="width: 18rem">
+            <div class="card-header">Markalar</div>
+            <ul class="list-group list-group-flush">
+              <li *ngFor="let brand of brands" class="list-group-item">
+                {{ brand.brandId }} : {{ brand.brandName }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card" style="width: 18rem">
+            <div class="card-header">Renkler</div>
+            <ul class="list-group list-group-flush">
+              <li *ngFor="let color of colors" class="list-group-item">
+               {{ color.colorId }} : {{ color.colorName }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <br />
+      <p style="font-size: 1px">*KDV : %18</p>
     </div>
-    </div>
-
-   
+  </div>
+</div>

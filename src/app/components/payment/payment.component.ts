@@ -91,14 +91,16 @@ this.createRentalDetailForm();
  }, 99900000);
 
 
- let newModel=Object.assign(this.rentalDetailForm.value)
-  this.rentalService.add(newModel).subscribe(response=>
+      let newModel=Object.assign(this.rentalDetailForm.value)
+      this.rentalService.add(newModel).subscribe(response=>
     {
       this.toastrService.success(response.message)
       this.toastrService.success("Başarılı Kayıt Edildi")
     })
 
     
+
+
     }
     // ,responseError=>{
 

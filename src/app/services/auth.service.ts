@@ -28,11 +28,13 @@ register (registerModel:RegisterModel) {
   }
 
 isAuthenticated()
-{   if (localStorage.getItem("token"))
+{ 
+    if (localStorage.getItem("token"))
   {
     return true;
   }
-else {
+else 
+{
   return false;
 }
 }

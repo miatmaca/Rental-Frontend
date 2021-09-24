@@ -1,37 +1,45 @@
 
      
-<form class="row g-3">
-        <div class="col-auto">
-          <label for="exampleFormControlInput1" class="form-label" >Markalar</label>
-          <br>     
-       
-          <select name ="selectedBrand" id="selectedBrand"  class="form-select" [(ngModel)]="selectedBrand" aria-label="Default select example">   
 
-         <option   [value]="brand.brandId"  *ngFor="let brand of brands" > {{brand.brandName}}</option>
-          </select>   
-           <!-- <label *ngIf ="selectedBrand"> {{selectedBrand}}</label> -->
-            
+        <div class="col-md-3">
+          <label for="exampleFormControlInput1" class="form-label" >Markalar</label>
+          <br>            
+          <select name ="selectedBrand" 
+          id="selectedBrand"  
+          class="form-select"
+          [(ngModel)]="selectedBrand"
+          aria-label="Default select example">   
+         <option  
+          [value]="brand.brandId"
+            *ngFor="let brand of brands" > 
+            {{brand.brandName}}</option>  
+                   
+        </select>              
 </div>                        
 
-        <div class="col-auto">
+        <div class="col-md-3">
             <label for="exampleFormControlInput1" class="form-label">Renkler</label>
             <br>
-            <select name ="selectedColor" id="selectedColor"  class="form-select" [(ngModel)]="selectedColor" aria-label="Default select example">  
+            <select name ="selectedColor" 
+            id="selectedColor" 
+             class="form-select" 
+             [(ngModel)]="selectedColor" 
+             aria-label="Default select example">  
 
-             <option   [value]="color.colorId"  *ngFor="let color of colors" > {{color.colorName}}</option>
-              </select>                
-              
-                <!-- <label *ngIf ="selectedColor"> {{selectedColor}}</label> -->
-          
-        
+             <option   [value]="color.colorId" 
+              *ngFor="let color of colors" > 
+              {{color.colorName}}
+            </option>
+
+            </select>                   
         </div>  
-              <div class="col-auto">
+              <div class="col-md-3">
 
                 <button  type="button"  class="btn btn-primary mb-3"  [routerLink]=(routingLink()) >Filtrele</button>
               
             </div>
     
-           </form>
+    
     
                  
     

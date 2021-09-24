@@ -7,50 +7,113 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Ana Sayfa</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <app-cart-summary></app-cart-summary>
-
-        <app-list></app-list>
-        
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex">
-       <!-- <li *ngIf="checkId()"  >
-         <select  *ngFor="let user of result" >   
-           <option >Ad Soyad: {{user.firstName}} {{user.lastName}} </option>  
-           <option > Email: {{user.email}} </option>           
-          
-          </select>
-        </li> -->
-        <div  *ngFor="let user of result">
-        <div class="btn-group" *ngIf="checkId()" >
-          <button type="button" class="btn btn-basic dropdown-toggle" data-bs-toggle="dropdown"  aria-expanded="false">
-           {{user.firstName}}
-          </button>
-          <ul class="dropdown-menu"   >
-            <li><a class="dropdown-item" >{{user.firstName}} {{user.lastName}}</a></li>
-            <li><a class="dropdown-item" >{{user.email}}</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" routerLink="/profile">Edit</a></li>
-            <li><a class="dropdown-item" (click)="remove()">Exit</a></li>
+          <a class="nav-link active" aria-current="page" href="/cars">Ana Sayfa</a>
+        </li>  
+        <li class="nav-item dropdown"  *ngFor="let claim of claims" >
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" *ngIf="claim.name == 'admin'" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Listele
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/cars/list" >Araçları Listele</a></li>
+            <li><a class="dropdown-item" href="/brand/list"  >Markaları Listele</a></li>    
+            <li><a class="dropdown-item" href="/colors/list"     >Renkleri Listele</a></li>
           </ul>
-        </div>
-      </div>
+        </li>     
+      </ul>
 
+      <form class="d-flex" *ngIf="authenticated == false">
+        <button class="btn btn-success" routerLink="/register">
+          Kayıt Ol
+        </button>
 
-        <button    *ngIf="checkId()"  class="btn btn-primary" type="submit" (click)="remove()" > Çıkış Yap</button>
-
-        <button    *ngIf="check()"  class="btn btn-outline-success" type="submit" routerLink="/login"> Giriş Yap</button>
-
-        <button  *ngIf="check()"  class="btn btn-outline-success" type="submit" routerLink="/register">Kayıt Ol</button>
-     
+        <button class="btn btn-primary" type="submit" routerLink="/login">
+          Giriş Yap
+        </button>
       </form>
+
+ <ul 
+          class="navbar-nav me-auto mb-2 mb-lg-0"
+          *ngIf="authenticated == true"
+        >
+       
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle "id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+            > profile
+              <!-- {{ user?.firstName }}
+              {{ user?.lastName }} ) -->
+            </a>
+            <ul
+              *ngFor="let claim of claims"
+              class="dropdown-menu background-color: black"
+              aria-labelledby="navbarDropdown"
+              style="background-color: white;"
+            >
+              <li class="colorl">
+                <a class="dropdown-item" routerLink="/profile"
+                  ><i class="fa fa-user"></i> Profil</a
+                >
+              </li>
+              <!-- <li class="colorl">
+                <a class="dropdown-item" routerLink="/cards"
+                  ><i class="fa fa-credit-card"></i> Kayıtlı Kartlarım</a
+                > 
+              </li>-->
+              <li><hr class="dropdown-divider" /></li>
+              <li class="nav-item" *ngIf="claim.name == 'admin' ">
+                <a class="dropdown-item" routerLink="/customers"
+                  ><i class="fa fa-users"></i> Müşteriler</a
+                >
+              </li>
+              <li class="nav-item" *ngIf="claim.name == 'admin' ">
+                <a class="dropdown-item" routerLink="/rentalladd"
+                  ><i class="bi bi-receipt"></i> Kiralamalar</a
+                >
+              </li>
+              <li class="nav-item" *ngIf="claim.name == 'admin'">
+                <a class="dropdown-item" routerLink="/claim/add"
+                  ><i class="fa fa-plus-circle"></i> Yetki Ekle</a
+                >
+              </li>
+              <li class="nav-item" *ngIf="claim.name == 'admin'">
+                <a class="dropdown-item" routerLink="/cars/add"
+                  ><i class="fa fa-plus-circle"></i> Araç Ekle</a
+                >
+              </li>
+
+              <li class="nav-item" *ngIf="claim.name == 'admin'">
+                <a class="dropdown-item" routerLink="/brand/add"
+                  ><i class="fa fa-plus-circle"></i> Marka Ekle</a
+                >
+              </li>
+              <li class="nav-item" *ngIf="claim.name == 'admin'">
+                <a class="dropdown-item" routerLink="/colors/add"
+                  ><i class="fa fa-plus-circle"></i> Renk Ekle</a
+                >
+              </li>
+
+              <li class="nav-item" *ngIf="claim.name == 'admin'">
+                <a class="dropdown-item" routerLink="/image/add"
+                  ><i class="fa fa-upload" aria-hidden="true"></i> Resim
+                  Yükle</a
+                >
+              </li>
+              <li>
+                <hr
+                  class="dropdown-divider"
+                  *ngIf="claim.name == 'admin'"
+                />
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="remove()"
+                  ><i class="fa fa-sign-out" aria-hidden="true"></i> Çıkış
+                  Yap</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>  
+ 
 </nav>

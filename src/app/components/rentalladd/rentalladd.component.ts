@@ -17,81 +17,31 @@ import { RentalService } from 'src/app/services/rental.service';
 export class RentalladdComponent implements OnInit {
 
   defaultPath="https://localhost:44376/"
+  rentals:Rental[]
 
-  rentall:Rental[]
-  cars:Car[]
-  carId:number
-  date:Date
-  state:string="display:none"
-  constructor(
+   constructor(
            private toastrService:ToastrService,
-            private rentallService:RentalService,
+            private rentalService:RentalService,
             private carService:CarService,
             private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     
-  this.activatedRoute.params.subscribe(params=>{
-     
-    if (params["carId"]){
+ this.getrental();
 
-  this.getcars(params["carId"]);
-    this.carId=params["carId"];
-     
-   } 
-   else
-      {
-     console.log("merhabna");
-     
-    }
-    })   
-    
-  }
-  getTest()
-  {
-this.toastrService.success("Ödeme Sayfası")
-  }
- 
-getrentall(){
-
-this.rentallService.getRentalDetail().subscribe(response=>{
-
-this.rentall=response.data;
-return this.rentall
-});
 }
 
-getcars(carId:number)
+getrental()
 {
-  this.carService.getByCarId(carId).subscribe(response=>{
-    
-   this.cars =response.data
-    return this.rentall
-   } )
-
-}
-getPath(){
-  return this.defaultPath;
-}
  
-getDateControl()
-{
-  this.rentallService.getcontrol(this.date,this.carId).subscribe(response=>{
+    this.rentalService.getRentalDetail().subscribe(response=>{
       
-     
-       this.toastrService.success(response.message)
-     this.state="display"
+     this.rentals =response.data 
+      
+     } )
   
 
-     },responseError=>{
-
-     this.toastrService.error(responseError.error.message) 
-      this.state="display:none"
-     
-  } 
-  )
 
 }
-
 
 }

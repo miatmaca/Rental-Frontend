@@ -1,61 +1,36 @@
+<table class="table table-striped">
+  <thead class="table-dark">
+      <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Adı</th>
+          <th scope="col">Soyad</th>
+          <th scope="col">Marka</th>
+          <th scope="col">Kiralama Tarihi</th>
+          <th scope="col">Kiradan Dönüş</th>       
+         
+         
+        }
 
- <div *ngFor="let car of cars">
-
-    <img
-    class="car-image"          
-    [src]="getPath()+car.imagePath" 
-    class="card-img-top"
-    alt="Resim Yok"
-    role="button"
-    width="200"
-    height="200"
-  /> 
-
-  <br><br>
-<div class="input-group mb-3" >
-    <span class="input-group-text" id="basic-addon1"></span>
-    <input type="text" class="form-control" placeholder="{{car.brandName}}" aria-label="Username" aria-describedby="basic-addon1"> 
-  </div>
-
-  
-
-  <div class="input-group mb-3" >
-    <span class="input-group-text" id="basic-addon1"></span>
-    <input type="text" class="form-control" placeholder="{{car.colorName}}" aria-label="Username" aria-describedby="basic-addon1"> 
-  </div>
-  
- 
-  <div class="input-group mb-3" >
-    <span class="input-group-text" id="basic-addon1"></span>
-    <input type="text" class="form-control" placeholder="{{car.modelYear}}" aria-label="Username" aria-describedby="basic-addon1"> 
-  </div>
-  
-  <div class="input-group mb-3" >
-    <span class="input-group-text" id="basic-addon1"></span>
-    <input type="text" class="form-control" placeholder="{{car.dailyPrice}}" aria-label="Username" aria-describedby="basic-addon1"> 
-  </div>
-  
-  <div class="input-group mb-3" >
-    <span class="input-group-text" id="basic-addon1"></span>
-    <input type="text" class="form-control" placeholder="{{car.description}}" aria-label="Username" aria-describedby="basic-addon1"> 
-  </div>
-   <div class="input-group mb-3" >
-    <span class="input-group-text" id="basic-addon1"></span>
-    <input type="number" class="form-control" placeholder="{{car.dailyPrice}} ₺" aria-label="Username" aria-describedby="basic-addon1"> 
-  </div> 
-
-  
-
-  <input  type="date"   id="date" [(ngModel)]="date"    >   
-
-  <br>
-<br>
-<a    class="btn btn-primary"    (click)="getDateControl()" >  Araç Durumu Kontrol      </a><br>
-
-<br>
-
-
-  <a    class="btn btn-primary"  [style]=state   routerLink="/cars/payment/{{car.dailyPrice}}">  Ödemeye Git      </a><br>
-  
-</div>
-
+          <th scope="col">
+           
+          </th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let rental of rentals">
+          <th scope="row" > {{ rental.id}}</th>
+    
+          <td>{{rental.firstName }}</td>
+          <td>{{ rental.lastName }}</td>
+          <td>{{ rental.carName }}</td>
+          <td>{{ rental.rentDate }}  </td>
+          <td>{{ rental.returnDate }}  </td>
+             
+      </tr>
+  </tbody>
+</table>   <!-- <button class="btn btn-warning" >
+        Güncelle
+      </button>
+              <button class="btn btn-danger mx-2" >
+        Sil
+      </button> -->

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Toast, ToastrService } from 'ngx-toastr';
+import { OperationClaim } from 'src/app/models/operationClaim';
 import { user } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -11,48 +13,51 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./navi.component.css']
 })
 export class NaviComponent implements OnInit {
-result:user[]
+user:user[]
+authenticated :boolean
+claims:OperationClaim[]
+
   constructor(private localStorageService:LocalStorageService,
     private userService:UserService,
     private toastrService:ToastrService,
-    private router:Router) { }
+    private router:Router,
+    private authService:AuthService) { }
 
   ngOnInit(): void {
-    this.getvalue();
+  this.IsAuthenticated();
+this.getByUserId();
+this.getUserClaimById()
   }
   
-
-  getvalue(){
-    
-
-   let userId=localStorage.getItem("customerId")
-   if (userId!=null)
-   {
-   this.userService.getUserId(Number(userId)).subscribe(response=>{
-  console.log(response.data);
-    this.result=response.data
-   })
-  }
- 
-  }
-checkId(){
-if (localStorage.getItem("customerId"))
-{
-  return true;
-}
-else 
-{ return false }
-
-}
-check(){
-  if (localStorage.getItem("customerId"))
-  {
-    return false;
-  }
-  else 
-  { return true }
   
+
+   IsAuthenticated(){
+    if (this.authService.isAuthenticated()) {
+
+      this.authenticated  = true;
+    } else {
+      this.authenticated  = false;
+    }
+  
+
+
+   }
+   getByUserId() {
+    this.userService.getUserId(Number(this.localStorageService.get('userId')))
+      .subscribe((response) => {
+        this.user = response.data;     
+      });
   }
+    getUserClaimById(){
+      this.userService.getUserClaimById(Number(this.localStorageService.get('customerId'))).subscribe(response=>{
+        this.claims=response.data
+        console.log(response.data);
+        
+      })
+
+    }
+
+  
 remove()
 {
 this.localStorageService.clean();

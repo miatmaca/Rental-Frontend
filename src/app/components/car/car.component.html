@@ -1,20 +1,18 @@
 
 
    <div class="row g-3">
-    <div class="col-auto">    
-        <label for="exampleFormControlInput1" class="form-label">Marka Ara</label>
-        <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz" style="width: 200px;"  >
-      </div>
+        
+        <label for="exampleFormControlInput1" class="form-label">Marka Ara</label>         
+        <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz" style="width: 200px;" >
+      
+
     <div *ngIf="filterText" class="alert alert-succes">
-    {{filterText}}  aradınız
-      </div>
-
-<app-carfilter> </app-carfilter>
+    {{filterText}}  aradınız      
+</div>
 
 
 
-
-
+</div>
 
 <div class="row">
   <div

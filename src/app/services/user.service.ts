@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/ListResponseModel';
+import { OperationClaim } from '../models/operationClaim';
 import { ResponseModel } from '../models/responseModel';
-import { SingleResponseModel } from '../models/singleResponseModel';
 import { user } from '../models/user';
 
 @Injectable({
@@ -31,4 +31,12 @@ export class UserService {
     return this.HttpClient.post<ResponseModel>(newPath,user)
 
    }
+   
+   getUserClaimById(userId:number) :Observable<ListResponseModel<OperationClaim>>{
+
+    let newPath=this.apiUrl+ "users/getuserclaimbyid?userId="+userId
+     return this.HttpClient.get<ListResponseModel<OperationClaim>>(newPath);
+   }
+  
+
 }
