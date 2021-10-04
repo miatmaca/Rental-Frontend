@@ -44,6 +44,8 @@ import { RegisterComponent } from './components/register/register.component';
 
 import { ProfileComponent } from './components/profile/profile.component';
 import { CalculateTotalPricePipe } from './pipes/calculate-total-price.pipe';
+import { ImageAddComponent } from './components/image-add/image-add.component';
+import { ClaimAddComponent } from './components/claim-add/claim-add.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,7 @@ import { CalculateTotalPricePipe } from './pipes/calculate-total-price.pipe';
          ColorDeleteComponent,
           ColorUpdateComponent, 
           ColorListComponent, 
-          LoginComponent, RegisterComponent, ProfileComponent, CalculateTotalPricePipe,
+          LoginComponent, RegisterComponent, ProfileComponent, CalculateTotalPricePipe, ImageAddComponent, ClaimAddComponent,
              
   ],
   imports: [

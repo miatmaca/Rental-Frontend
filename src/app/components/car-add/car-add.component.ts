@@ -69,14 +69,6 @@ if (this.carAddForm.valid)
      this.toastrService.success(response.message,"Başarılı")
    
 
-  },  responseError=>{
-    //console.log(responseError.error);
-   // this.toastrService.error(responseError.error.Message)
-
-    for (let index = 0; index < responseError.error.Errors.length; index++) {
-
-      this.toastrService.error(responseError.error.Errors[index].ErrorMessage)
-    }
   }
     
     );

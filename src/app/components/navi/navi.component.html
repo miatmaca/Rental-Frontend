@@ -60,11 +60,11 @@
                 > 
               </li>-->
               <li><hr class="dropdown-divider" /></li>
-              <li class="nav-item" *ngIf="claim.name == 'admin' ">
+              <!-- <li class="nav-item" *ngIf="claim.name == 'admin' ">
                 <a class="dropdown-item" routerLink="/customers"
                   ><i class="fa fa-users"></i> Müşteriler</a
                 >
-              </li>
+              </li> -->
               <li class="nav-item" *ngIf="claim.name == 'admin' ">
                 <a class="dropdown-item" routerLink="/rentalladd"
                   ><i class="bi bi-receipt"></i> Kiralamalar</a
@@ -93,7 +93,7 @@
               </li>
 
               <li class="nav-item" *ngIf="claim.name == 'admin'">
-                <a class="dropdown-item" routerLink="/image/add"
+                <a class="dropdown-item" routerLink="/imageadd"
                   ><i class="fa fa-upload" aria-hidden="true"></i> Resim
                   Yükle</a
                 >

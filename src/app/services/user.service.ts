@@ -5,6 +5,7 @@ import { ListResponseModel } from '../models/ListResponseModel';
 import { OperationClaim } from '../models/operationClaim';
 import { ResponseModel } from '../models/responseModel';
 import { user } from '../models/user';
+import { userOperationClaimDto } from '../models/userOperationClaimDto';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,16 @@ export class UserService {
     let newPath=this.apiUrl+ "users/getuserclaimbyid?userId="+userId
      return this.HttpClient.get<ListResponseModel<OperationClaim>>(newPath);
    }
-  
+   getUserAll() :Observable<ListResponseModel<user>>{
+
+    let newPath=this.apiUrl+ "users/getall"
+     return this.HttpClient.get<ListResponseModel<user>>(newPath);
+   }
+
+   getAllUserClaimDto() :Observable<ListResponseModel<userOperationClaimDto>>{
+
+    let newPath=this.apiUrl+ "users/getalluserclaimdto"
+     return this.HttpClient.get<ListResponseModel<userOperationClaimDto>>(newPath);
+   }
 
 }

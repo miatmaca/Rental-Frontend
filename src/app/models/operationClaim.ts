@@ -1,5 +1,5 @@
 export interface OperationClaim {
-   userId:number
+   id:number
    name:string
   
   }

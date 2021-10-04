@@ -1,0 +1,127 @@
+ <div class="loader"></div> <!--*ngIf="dataLoaded == false" -->
+<br />
+<div class="container" >
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card" style="width: 18rem">
+        <div class="card-header">Yetkiler</div>
+        <ul class="list-group list-group-flush">
+          <li *ngFor="let claim of claims" class="list-group-item">
+            {{ claim.id }} : {{ claim.name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-header">
+          <b>
+            <p
+              style="text-align: center; font-size: x-large; opacity: 0.8"
+              class="text-danger"
+
+            >
+              Yetki Ekle
+            </p>
+          </b>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="claimAddForm">
+            <div class="mb-3">
+              <input
+                type="number"
+                class="form-control"
+                formControlName="operationClaimsId"
+                id="operationClaimId"
+                placeholder="Verilecek Yetki (Id)"
+              />
+            </div>
+            <div class="mb-3">
+              <input
+                type="number"
+                class="form-control"
+                formControlName="userId"
+                id="userId"
+                placeholder="Yetki Verilecek Kullanıcı (Id)"
+              />
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-success" style="float: right" (click)="add()">
+            <i class="fa fa-plus-circle" aria-hidden="true" ></i> Ekle
+          </button>
+          <button class="btn btn-success" style="float: left" (click)="update()">
+            <i class="fa fa-plus-circle" aria-hidden="true" ></i> Güncelle
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card" style="width: 18rem">
+        <div class="card-header">Kullanıcılar</div>
+        <ul class="list-group list-group-flush">
+          <li *ngFor="let user of users" class="list-group-item">
+            {{ user.id }} : {{ user.email }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Kullanıcı Adı Soyadı</th>
+            <th scope="col">Email</th>
+            <th scope="col">Yetki</th>                        
+            <th scope="col">
+             
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let userOperationDto of userOperationDtos">
+            <th scope="row">
+                {{ userOperationDto.id }}</th>
+            <td>{{ userOperationDto.firstName }}{{userOperationDto.lastName}}</td>
+            <td>{{userOperationDto.email }}</td>
+            <td>{{ userOperationDto.claim}}</td>           
+            <td>     
+                            
+
+
+                <button onclick="document.getElementById('id01').style.display='block'" >Sil</button>
+
+                <div id="id01" class="modal">
+                  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                  <form class="modal-content" action="/action_page.php">
+                    <div class="container">
+                      <h1>Bilgileri Sil</h1>
+                      <p>Silmek İstediğine Emin misin?</p>
+                
+                      <div class="clearfix">
+                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Geri Dön</button>
+                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="deletebtn">Sil</button>
+                     
+                      </div>                     
+                    </div>
+                  </form>
+                </div>
+                <script>
+                    // Get the modal
+                    var modal = document.getElementById('id01');
+                    
+                    // When the user clicks anywhere outside of the modal, close it
+                    window.onclick = function(event) {
+                      if (event.target == modal) {
+                        modal.style.display = "none";
+                      }
+                    }
+                    </script>
+            </td>
+        </tr>
+    </tbody>
+</table>

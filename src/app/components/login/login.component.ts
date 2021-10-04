@@ -48,6 +48,7 @@ this.getUserByEmail(this.loginForm.value.email)
 
 
 this.authService.login(loginModel).subscribe(response=>{
+  
  this.localStorageService.set("token",response.data.token)
  this.localStorageService.set("email",this.loginForm.value.email) 
 this.localStorageService.set("customerId",String(this.userId))

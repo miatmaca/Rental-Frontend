@@ -68,5 +68,9 @@ return this.HttpClient.post<ResponseModel>(this.apiUrl+"cars/add",car)
     return this.HttpClient.post<ResponseModel>(newPath,car)
 
    }
-  
+   delete(car:Car):Observable<ResponseModel>
+   {
+    let newPath=this.apiUrl+"cars/delete"
+    return this.HttpClient.post<ResponseModel>(newPath,car)
+   }
 }
